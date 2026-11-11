@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 Космічна Презентація: Рятуємо Землю! | 5 Клас</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Nunito', sans-serif;
+            user-select: none;
+        }
+        h1, h2, h3, .font-heading {
+            font-family: 'Comfortaa', cursive;
+        }
+        
+        /* Custom Neon Animations & Glows */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 15px rgba(236, 72, 153, 0.7), 0 0 30px rgba(139, 92, 246, 0.5); }
+            50% { box-shadow: 0 0 25px rgba(236, 72, 153, 1), 0 0 50px rgba(139, 92, 246, 0.9); }
+        }
+        @keyframes laser-pulse {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+        .animate-float { animation: float 4s ease-in-out infinite; }
+        .pulse-glow { animation: pulse-glow 2s infinite; }
+        
+        /* Custom Scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e1b4b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8b5cf6;
+            border-radius: 4px;
+        }
+
+        /* Slide Element Animations Simulated */
+        .anim-bounce { animation: bounce 1s infinite; }
+        .anim-spin { animation: spin 3s linear infinite; }
+        .anim-fade { animation: fadeIn 1s forwards; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-white min-h-screen flex flex-col justify-between overflow-x-hidden">
+
+    <!-- TOP NAV BAR -->
+    <header class="bg-gradient-to-r from-purple-900 via-pink-600 to-yellow-500 p-3 shadow-lg border-b-4 border-yellow-300">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-2">
+            <div class="flex items-center space-x-3">
+                <span class="text-3xl animate-bounce">👾</span>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-black text-yellow-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                        КОСМІЧНА ПРЕЗЕНТАЦІЯ
+                    </h1>
+                    <p class="text-xs font-bold text-pink-100">Місія: Врятувати Землю від Прибульців! 🌍✨</p>
+                </div>
+            </div>
+            <!-- LEVEL COUNTER BADGE -->
+            <div class="flex items-center space-x-2 bg-slate-900/80 px-4 py-2 rounded-2xl border-2 border-cyan-400">
+                <i class="fa-solid fa-trophy text-yellow-400 text-xl"></i>
+                <div class="text-right">
+                    <div class="text-xs font-bold text-cyan-300">РІВЕНЬ</div>
+                    <div id="levelBadge" class="text-lg font-black text-pink-400">1 / 5</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-7xl mx-auto w-full p-2 md:p-4 flex-grow flex flex-col gap-4">
+
+        <!-- INTRO HERO STORY (Visible at start or toggled) -->
+        <section id="introCard" class="bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 border-4 border-pink-500 rounded-3xl p-5 shadow-2xl relative overflow-hidden">
+            <div class="relative z-10 flex flex-col md:flex-row items-center gap-6">
+                <div class="text-6xl md:text-8xl animate-float">🛸</div>
+                <div class="flex-1 text-center md:text-left">
+                    <span class="bg-red-500 text-white font-black px-3 py-1 rounded-full text-xs uppercase tracking-wider">⚠️ КРИЗА НА ЗЕМЛІ!</span>
+                    <h2 class="text-2xl md:text-3xl font-black text-yellow-300 mt-2">Злі прибульці заблокували презентацію! 👽</h2>
+                    <p class="mt-2 text-sm md:text-base text-purple-100 leading-relaxed">
+                        Прибульці з галактики ZOG викрали головний файл порятунку Землі! Щоб відновити галактичний захист, тобі потрібно пройти **5 рівнів навчання** та самостійно створити супер-презентацію в нашому симуляторі! Готовий стати героєм? 🚀🎨
+                    </p>
+                </div>
+                <button onclick="startQuest()" class="pulse-glow bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-300 hover:to-orange-400 text-slate-950 font-black text-lg px-8 py-4 rounded-2xl shadow-xl transform hover:scale-105 transition-all">
+                    СТАРТ МІСІЇ 🎮✨
+                </button>
+            </div>
+        </section>
+
+        <!-- QUEST PROGRESS BAR -->
+        <div class="bg-slate-900 border-2 border-purple-500/50 rounded-2xl p-3 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div class="flex items-center space-x-2 w-full sm:w-auto">
+                <span id="levelIcon" class="text-2xl">📑</span>
+                <div class="w-full">
+                    <h3 id="levelTitle" class="font-bold text-yellow-300 text-sm md:text-base">Рівень 1: Структура та Макети слайдів</h3>
+                    <p id="levelSubtitle" class="text-xs text-purple-200">Вивчи теорію та виправ помилки дизайну!</p>
+                </div>
+            </div>
+            <!-- Progress Steps -->
+            <div class="flex space-x-2 w-full sm:w-auto justify-center">
+                <div id="step1" class="w-8 h-8 rounded-full bg-pink-600 font-bold flex items-center justify-center border-2 border-yellow-300 text-xs">1</div>
+                <div id="step2" class="w-8 h-8 rounded-full bg-slate-800 font-bold flex items-center justify-center border-2 border-slate-700 text-xs">2</div>
+                <div id="step3" class="w-8 h-8 rounded-full bg-slate-800 font-bold flex items-center justify-center border-2 border-slate-700 text-xs">3</div>
+                <div id="step4" class="w-8 h-8 rounded-full bg-slate-800 font-bold flex items-center justify-center border-2 border-slate-700 text-xs">4</div>
+                <div id="step5" class="w-8 h-8 rounded-full bg-slate-800 font-bold flex items-center justify-center border-2 border-slate-700 text-xs">5</div>
+            </div>
+        </div>
+
+        <!-- TWO COLUMN LAYOUT: THEORY PANEL & SIMULATOR EDITOR -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
+            
+            <!-- LEFT: THEORY & INSTRUCTIONS (4 Cols on LG) -->
+            <div class="lg:col-span-4 bg-slate-900 border-4 border-cyan-500 rounded-3xl p-4 shadow-xl flex flex-col gap-4">
+                
+                <div class="bg-gradient-to-r from-cyan-900 to-blue-900 p-3 rounded-2xl border-2 border-cyan-400 flex items-center justify-between">
+                    <h3 class="font-black text-cyan-200 text-base flex items-center gap-2">
+                        <span>📚</span> ТЕОРЕТИЧНИЙ БАГАЖ
+                    </h3>
+                    <span class="text-xs bg-cyan-500 text-slate-950 px-2 py-1 rounded-lg font-bold">База Знань 💡</span>
+                </div>
+
+                <!-- Theory Dynamic Content Box -->
+                <div id="theoryBox" class="text-sm text-slate-200 space-y-3 max-h-[380px] overflow-y-auto pr-1">
+                    <!-- Dynamic Theory injected by JS -->
+                </div>
+
+                <!-- Mission Task Box -->
+                <div class="bg-yellow-500/10 border-2 border-yellow-400/60 p-3 rounded-2xl">
+                    <h4 class="font-black text-yellow-300 text-xs uppercase tracking-wider flex items-center gap-1">
+                        <span>🎯</span> Завдання Рівня:
+                    </h4>
+                    <p id="taskDescription" class="text-xs md:text-sm font-bold text-yellow-100 mt-1">
+                        Виконай дії у симуляторі праворуч, щоб відкрити секретний код!
+                    </p>
+                </div>
+
+                <!-- Action Button -->
+                <button id="verifyBtn" onclick="verifyCurrentLevel()" class="w-full bg-gradient-to-r from-emerald-400 to-teal-500 hover:from-emerald-300 hover:to-teal-400 text-slate-950 font-black py-3 rounded-2xl shadow-lg border-2 border-emerald-200 transform hover:scale-[1.02] active:scale-95 transition-all text-base flex items-center justify-center gap-2">
+                    <span>ПЕРЕВІРИТИ ЗАВДАННЯ</span> 🚀
+                </button>
+            </div>
+
+            <!-- RIGHT: POWERPOINT SIMULATOR GUI (8 Cols on LG) -->
+            <div class="lg:col-span-8 bg-slate-900 border-4 border-pink-500 rounded-3xl shadow-2xl overflow-hidden flex flex-col">
+                
+                <!-- SIMULATOR RIBBON (TABS & TOOLBAR) -->
+                <div class="bg-slate-800 border-b-2 border-slate-700">
+                    <!-- Tab Names -->
+                    <div class="flex overflow-x-auto bg-slate-950 text-xs font-bold border-b border-slate-800 text-slate-300">
+                        <button onclick="switchTab('home')" id="tab-home" class="px-3 py-2 bg-pink-600 text-white border-b-2 border-yellow-400 whitespace-nowrap">Основне 🏠</button>
+                        <button onclick="switchTab('insert')" id="tab-insert" class="px-3 py-2 hover:bg-slate-800 whitespace-nowrap">Вставлення ➕</button>
+                        <button onclick="switchTab('design')" id="tab-design" class="px-3 py-2 hover:bg-slate-800 whitespace-nowrap">Конструктор 🎨</button>
+                        <button onclick="switchTab('transitions')" id="tab-transitions" class="px-3 py-2 hover:bg-slate-800 whitespace-nowrap">Переходи 🔀</button>
+                        <button onclick="switchTab('animations')" id="tab-animations" class="px-3 py-2 hover:bg-slate-800 whitespace-nowrap">Анімація 🪄</button>
+                        <button onclick="switchTab('show')" id="tab-show" class="px-3 py-2 hover:bg-slate-800 whitespace-nowrap">Показ слайдів 🎬</button>
+                    </div>
+
+                    <!-- Toolbar Controls (Dynamic per tab) -->
+                    <div id="toolbar" class="p-2 flex flex-wrap items-center gap-2 bg-slate-900 text-xs min-h-[54px]">
+                        <!-- Populated by JS Tab switcher -->
+                    </div>
+                </div>
+
+                <!-- MAIN WORKSPACE: LEFT SLIDE LIST + CENTER CANVAS -->
+                <div class="flex flex-1 min-h-[360px] md:min-h-[420px] bg-slate-950 relative overflow-hidden">
+                    
+                    <!-- LEFT THUMBNAILS (SLIDE LIST) -->
+                    <div class="w-20 md:w-28 bg-slate-900 border-r-2 border-slate-800 p-2 flex flex-col gap-2 overflow-y-auto">
+                        <div class="text-[10px] font-bold text-slate-400 uppercase text-center">Слайди 📑</div>
+                        <div id="slidesList" class="flex flex-col gap-2">
+                            <!-- Slide thumbnails injected here -->
+                        </div>
+                        <button onclick="addNewSlide()" class="w-full py-2 bg-purple-900/60 hover:bg-purple-800 border border-purple-500 rounded-lg text-purple-300 font-bold text-xs flex flex-col items-center justify-center gap-1">
+                            <i class="fa-solid fa-plus text-sm"></i>
+                            <span>Додати</span>
+                        </button>
+                    </div>
+
+                    <!-- CENTER SLIDE EDITOR CANVAS -->
+                    <div class="flex-1 p-3 md:p-6 bg-slate-950 flex flex-col items-center justify-center relative overflow-hidden">
+                        
+                        <!-- THE ACTUAL SLIDE CANVAS CONTAINER -->
+                        <div id="slideCanvas" class="w-full max-w-[560px] aspect-[16/9] bg-white rounded-xl shadow-2xl border-4 border-slate-700 relative overflow-hidden transition-all duration-300 flex flex-col p-4 text-slate-900">
+                            <!-- Dynamic Content Inside Canvas -->
+                        </div>
+
+                        <!-- LASER POINTER / PRESENTATION OVERLAY (FULLSCREEN SIMULATION) -->
+                        <div id="presentationOverlay" class="hidden absolute inset-0 bg-slate-950 z-50 flex flex-col items-center justify-center p-4">
+                            <div id="presenterSlide" class="w-full max-w-[640px] aspect-[16/9] bg-white rounded-xl shadow-2xl relative overflow-hidden flex flex-col p-6 text-slate-900 cursor-none">
+                                <!-- Presentation Mode View -->
+                            </div>
+                            <!-- Laser Pointer Element -->
+                            <div id="laserDot" class="hidden absolute w-6 h-6 rounded-full bg-red-500 border-2 border-white shadow-[0_0_15px_#f43f5e] pointer-events-none z-50 animate-[laser-pulse_1s_infinite]"></div>
+                            
+                            <!-- Presenter Controls -->
+                            <div class="mt-4 flex items-center space-x-4 bg-slate-900 px-6 py-2 rounded-2xl border border-slate-700 text-xs">
+                                <button onclick="prevShowSlide()" class="px-3 py-1 bg-purple-700 hover:bg-purple-600 rounded-lg font-bold">⬅️ Назад</button>
+                                <span id="showSlideNum" class="text-yellow-300 font-bold">Слайд 1</span>
+                                <button onclick="nextShowSlide()" class="px-3 py-1 bg-purple-700 hover:bg-purple-600 rounded-lg font-bold">Далі ➡️</button>
+                                <button onclick="toggleLaser()" id="laserBtn" class="px-3 py-1 bg-red-600 hover:bg-red-500 rounded-lg font-bold">🔴 Вмикнути Лазер</button>
+                                <button onclick="exitShow()" class="px-3 py-1 bg-slate-700 hover:bg-slate-600 rounded-lg font-bold">❌ Вийти (Esc)</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- STATUS BAR -->
+                <div class="bg-slate-950 px-3 py-1 border-t border-slate-800 flex justify-between items-center text-[11px] text-slate-400">
+                    <div class="flex items-center space-x-3">
+                        <span id="statusSlideInfo">Слайд 1 з 1</span>
+                        <span class="hidden sm:inline">|</span>
+                        <span id="statusLayoutInfo" class="hidden sm:inline text-purple-300">Макет: Титульний</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span>Заметки 📝</span>
+                        <span>|</span>
+                        <span class="text-cyan-400 font-bold">100%</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- COMPLETION / FORMSPREE FINAL SECTION (Hidden until Level 5 finished) -->
+        <section id="finalFormCard" class="hidden bg-gradient-to-br from-emerald-900 via-teal-900 to-indigo-950 border-4 border-yellow-400 rounded-3xl p-6 shadow-2xl text-center space-y-4">
+            <div class="text-6xl animate-bounce">🏆🌟🎉</div>
+            <h2 class="text-2xl md:text-4xl font-black text-yellow-300">ВІТАЄМО! ТИ ВРЯТУВАВ ЗЕМЛЮ!</h2>
+            <p class="text-sm md:text-base text-emerald-100 max-w-2xl mx-auto">
+                Ти успішно засвоїв усі правила створення комп'ютерних презентацій! Заповни форму нижче, щоб відправити результат учителю та отримати свої **12 БАЛІВ**! 🎓💯
+            </p>
+
+            <!-- Formspree Integration -->
+            <form action="https://formspree.io/f/mgaaqlbw" method="POST" class="max-w-md mx-auto bg-slate-900/90 p-5 rounded-2xl border-2 border-teal-400 flex flex-col gap-4 text-left">
+                <div>
+                    <label class="block text-xs font-bold text-cyan-300 mb-1">Прізвище та Ім'я учня/учениці 👤</label>
+                    <input type="text" name="student_name" required placeholder="Наприклад: Іваненко Марія" class="w-full p-2.5 rounded-xl bg-slate-800 border border-slate-600 text-white focus:outline-none focus:border-yellow-400 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-cyan-300 mb-1">Клас 🏫</label>
+                    <input type="text" name="student_class" required placeholder="Наприклад: 5-А" class="w-full p-2.5 rounded-xl bg-slate-800 border border-slate-600 text-white focus:outline-none focus:border-yellow-400 text-sm">
+                </div>
+                <!-- Hidden inputs for score -->
+                <input type="hidden" name="score" value="12/12 Балів (Всі Рівні Пройдено)">
+                <input type="hidden" name="topic" value="Комп'ютерні презентації 5 клас">
+
+                <button type="submit" class="w-full pulse-glow bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-300 hover:to-amber-400 text-slate-950 font-black py-3 rounded-xl shadow-lg text-base">
+                    НАДІСЛАТИ РЕЗУЛЬТАТ УЧИТЕЛЮ 📩✨
+                </button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-slate-800 p-3 text-center text-xs text-slate-500">
+        Космічна Презентація © Інтерактивний Симулятор Інформатики 5 Клас | Зроблено з любов'ю для учнів 🚀✨
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // GLOBAL STATE
+        let currentLevel = 1;
+        let activeTab = 'home';
+        let isLaserActive = false;
+
+        // Presentation Data State
+        let slides = [
+            {
+                id: 1,
+                layout: 'title', // title, text, compare, blank
+                title: 'ВРЯТУЄМО ЗЕМЛЮ РАЗОМ!',
+                subtitle: 'Презентація проти Прибульців 🌍',
+                bg: '#ffffff',
+                textColor: '#1e293b',
+                fontFamily: 'Nunito',
+                fontSize: '24px',
+                alignment: 'center',
+                hasWordArt: false,
+                wordArtText: '',
+                shape: null,
+                image: null,
+                animation: 'none',
+                transition: 'none'
+            }
+        ];
+        let currentSlideIndex = 0;
+
+        // LEVEL DEFINITIONS WITH THEORY & TASKS
+        const levelData = {
+            1: {
+                title: "Рівень 1: Структура, Макети та Правила Дизайну 📑",
+                subtitle: "Зроби слайд зручним для читання!",
+                theory: `
+                    <p class="font-bold text-yellow-300">📌 Що таке слайдова презентація?</p>
+                    <p>Це набір слайдів із текстом, малюнками та відео для публічного виступу 🎤.</p>
+                    <p class="font-bold text-pink-400 mt-2">📏 Золоті правила якісного слайда:</p>
+                    <ul class="list-disc pl-4 space-y-1 text-xs">
+                        <li><b>Правило 6-8 рядків:</b> Не захаращуй слайд великим текстом! 📜</li>
+                        <li><b>Контраст:</b> Темний текст на світлому фоні (або навпаки) 🌗.</li>
+                        <li><b>Розмір шрифту:</b> Заголовки та текст мають бути не менше <b>24 pt</b>! 🔍</li>
+                        <li><b>Макети слайдів:</b> Титульний, Назва і вміст, Порівняння, Пустий 📐.</li>
+                    </ul>
+                `,
+                task: "Натисни вкладку <b>'Конструктор 🎨'</b> та зміни колір фону слайда на темний або яскравій, або вибери макет <b>'Назва і вміст'</b> у вкладці <b>'Основне'</b>!",
+                check: () => {
+                    const slide = slides[currentSlideIndex];
+                    return slide.layout === 'content' || slide.bg !== '#ffffff';
+                }
+            },
+            2: {
+                title: "Рівень 2: Текстові об'єкти та WordArt ✍️",
+                subtitle: "Додай художній текст для привернення уваги!",
+                theory: `
+                    <p class="font-bold text-yellow-300">🔤 Текстові об'єкти на слайді:</p>
+                    <p>Бувають звичайні <b>Текстові поля</b> 📝 та об'єкти <b>WordArt</b> (художній виділений текст) 🎨.</p>
+                    <p class="font-bold text-cyan-300 mt-2">⚙️ Форматування тексту:</p>
+                    <ul class="list-disc pl-4 space-y-1 text-xs">
+                        <li>Зміна гарнітури (шрифту), розміру та кольору символів 🎨.</li>
+                        <li><b>Вирівнювання абзаців:</b> за лівим краєм, по центру, за правим краєм або за шириною 📐.</li>
+                        <li><b>WordArt:</b> використовують для яскравіших заголовків та слів-акцентів ✨.</li>
+                    </ul>
+                `,
+                task: "Перейди у вкладку <b>'Вставлення ➕'</b> та додай об'єкт <b>WordArt</b> зі словами <b>'СТОП АТАЦІ'</b>!",
+                check: () => {
+                    const slide = slides[currentSlideIndex];
+                    return slide.hasWordArt && slide.wordArtText.trim().length > 0;
+                }
+            },
+            3: {
+                title: "Рівень 3: Графічні об'єкти та Фігури 🖼️",
+                subtitle: "Прикрась слайд ілюстраціями та геометричними фігурами!",
+                theory: `
+                    <p class="font-bold text-yellow-300">🖼️ Види графіки на слайдах:</p>
+                    <p>На слайд можна вставляти: <b>Фігури</b> 🟥⭐, <b>Зображення</b> 📸, <b>Піктограми</b> 🎯 та <b>3D-моделі</b> 🧊.</p>
+                    <p class="font-bold text-emerald-400 mt-2">⚖️ Академічна доброчесність & Авторські права:</p>
+                    <ul class="list-disc pl-4 space-y-1 text-xs">
+                        <li>Беручи малюнки з Інтернету, шукай ліцензію <b>Creative Commons</b> 🌐.</li>
+                        <li>Обов’язково додавай посилання на джерело 🔗!</li>
+                        <li><b>Порядок шарів:</b> об'єкти можна переміщувати <i>'Вперед'</i> або <i>'Назад'</i> 📚.</li>
+                    </ul>
+                `,
+                task: "Перейди у вкладку <b>'Вставлення ➕'</b> та додай на слайд <b>Фігуру (Зірку ⭐)</b> або <b>Картинку 🚀</b>!",
+                check: () => {
+                    const slide = slides[currentSlideIndex];
+                    return slide.shape !== null || slide.image !== null;
+                }
+            },
+            4: {
+                title: "Рівень 4: Анімації об'єктів та Переходи 🪄",
+                subtitle: "Оживи слайди динамічними ефектами!",
+                theory: `
+                    <p class="font-bold text-yellow-300">✨ Анімація vs Переходи:</p>
+                    <ul class="list-disc pl-4 space-y-1 text-xs">
+                        <li><b>Анімація:</b> застосовується до ОКОРЕМИХ об'єктів на слайді (Вхід 🟢, Виділення 🟡, Вихід 🔴) 🪄.</li>
+                        <li><b>Перехід:</b> ефект зміни ОДНОГО слайда на ІНШИЙ (Поява 🌊, Розчинення 💥) 🔀.</li>
+                    </ul>
+                    <p class="font-bold text-pink-400 mt-2">⚠️ Застереження:</p>
+                    <p class="text-xs">Занадто багато анімації відволікає слухачів! Використовуй її доцільно 🎯.</p>
+                `,
+                task: "Перейди у вкладку <b>'Анімація 🪄'</b> і застосуй анімацію <b>'Підстрибування'</b> або <b>'Обертання'</b>!",
+                check: () => {
+                    const slide = slides[currentSlideIndex];
+                    return slide.animation !== 'none' || slide.transition !== 'none';
+                }
+            },
+            5: {
+                title: "Рівень 5: Демонстрація та Лазерний вказівник 🎬",
+                subtitle: "Запусти показ слайдів та проведи переможний виступ!",
+                theory: `
+                    <p class="font-bold text-yellow-300">📺 Режими роботи з презентацією:</p>
+                    <ul class="list-disc pl-4 space-y-1 text-xs">
+                        <li><b>Звичайний:</b> створення та редагування 🛠️.</li>
+                        <li><b>Сортувальник слайдів:</b> швидка зміна порядку слайдів 🗂️.</li>
+                        <li><b>Показ слайдів (F5):</b> повноекранна демонстрація перед аудиторією 🎤.</li>
+                    </ul>
+                    <p class="font-bold text-cyan-300 mt-2">🔴 Лазерний вказівник:</p>
+                    <p class="text-xs">Допомагає підсвічувати важливі об'єкти під час виступу, щоб глядачі не втрачали увагу!</p>
+                `,
+                task: "Перейди у вкладку <b>'Показ слайдів 🎬'</b>, натисни <b>'З початку (F5) 🚀'</b> та увімкни <b>'Лазер 🔴'</b>!",
+                check: () => {
+                    return isLaserActive || document.getElementById('presentationOverlay').classList.contains('flex');
+                }
+            }
+        };
+
+        // INITIALIZATION
+        window.onload = function() {
+            renderTheory();
+            switchTab('home');
+            renderSlidesList();
+            renderCanvas();
+        };
+
+        // START QUEST BUTTON ACTION
+        function startQuest() {
+            document.getElementById('introCard').classList.add('hidden');
+        }
+
+        // RENDER THEORY CONTENT FOR CURRENT LEVEL
+        function renderTheory() {
+            const data = levelData[currentLevel];
+            document.getElementById('levelBadge').innerText = `${currentLevel} / 5`;
+            document.getElementById('levelTitle').innerText = data.title;
+            document.getElementById('levelSubtitle').innerText = data.subtitle;
+            document.getElementById('theoryBox').innerHTML = data.theory;
+            document.getElementById('taskDescription').innerHTML = data.task;
+
+            // Highlight progress steps
+            for(let i = 1; i <= 5; i++) {
+                const el = document.getElementById(`step${i}`);
+                if(i < currentLevel) {
+                    el.className = "w-8 h-8 rounded-full bg-emerald-500 font-bold flex items-center justify-center border-2 border-emerald-300 text-xs text-slate-950";
+                    el.innerText = "✓";
+                } else if(i === currentLevel) {
+                    el.className = "w-8 h-8 rounded-full bg-pink-600 font-bold flex items-center justify-center border-2 border-yellow-300 text-xs text-white animate-pulse";
+                    el.innerText = i;
+                } else {
+                    el.className = "w-8 h-8 rounded-full bg-slate-800 font-bold flex items-center justify-center border-2 border-slate-700 text-xs text-slate-500";
+                    el.innerText = i;
+                }
+            }
+        }
+
+        // VERIFY LEVEL ACTION
+        function verifyCurrentLevel() {
+            const data = levelData[currentLevel];
+            if (data.check()) {
+                if (currentLevel < 5) {
+                    alert(`🎉 СУПЕР! Рівень ${currentLevel} пройдено! Твій космічний код розблоковано! 🚀`);
+                    currentLevel++;
+                    renderTheory();
+                } else {
+                    alert(`🏆 ВІТАЄМО! Ти пройшов усі 5 рівнів та врятував Землю! 🎉`);
+                    document.getElementById('finalFormCard').classList.remove('hidden');
+                    document.getElementById('finalFormCard').scrollIntoView({ behavior: 'smooth' });
+                }
+            } else {
+                alert(`⚠️ Хмм, завдання ще не виконано повністю! 💡 Уважно прочитай підказку та спробуй виконати дію у редакторі слайдів.`);
+            }
+        }
+
+        // TAB SWITCHER FOR SIMULATOR RIBBON
+        function switchTab(tab) {
+            activeTab = tab;
+            const tabs = ['home', 'insert', 'design', 'transitions', 'animations', 'show'];
+            tabs.forEach(t => {
+                const btn = document.getElementById(`tab-${t}`);
+                if (t === tab) {
+                    btn.className = "px-3 py-2 bg-pink-600 text-white border-b-2 border-yellow-400 whitespace-nowrap font-black";
+                } else {
+                    btn.className = "px-3 py-2 hover:bg-slate-800 text-slate-300 whitespace-nowrap";
+                }
+            });
+
+            // Populate Toolbar
+            const toolbar = document.getElementById('toolbar');
+            const slide = slides[currentSlideIndex];
+
+            if (tab === 'home') {
+                toolbar.innerHTML = `
+                    <div class="flex items-center space-x-1 border-r border-slate-700 pr-2">
+                        <button onclick="setLayout('title')" class="px-2 py-1 bg-slate-800 hover:bg-slate-700 rounded text-[11px] font-bold">📄 Титульний</button>
+                        <button onclick="setLayout('content')" class="px-2 py-1 bg-slate-800 hover:bg-slate-700 rounded text-[11px] font-bold">📋 Назва і Вміст</button>
+                    </div>
+                    <div class="flex items-center space-x-1 border-r border-slate-700 pr-2">
+                        <select onchange="setFont(this.value)" class="bg-slate-800 text-xs px-2 py-1 rounded border border-slate-700 text-yellow-300">
+                            <option value="Nunito">Font: Nunito</option>
+                            <option value="Comfortaa">Font: Comfortaa</option>
+                            <option value="Comic Sans MS">Font: Comic Sans</option>
+                        </select>
+                        <button onclick="setTextColor('#ec4899')" class="w-6 h-6 rounded bg-pink-500 border border-white" title="Рожевий текст"></button>
+                        <button onclick="setTextColor('#3b82f6')" class="w-6 h-6 rounded bg-blue-500 border border-white" title="Синій текст"></button>
+                        <button onclick="setTextColor('#10b981')" class="w-6 h-6 rounded bg-emerald-500 border border-white" title="Зелений текст"></button>
+                    </div>
+                    <div class="flex items-center space-x-1">
+                        <button onclick="setAlignment('left')" class="p-1.5 bg-slate-800 hover:bg-slate-700 rounded"><i class="fa-solid fa-align-left"></i></button>
+                        <button onclick="setAlignment('center')" class="p-1.5 bg-slate-800 hover:bg-slate-700 rounded"><i class="fa-solid fa-align-center"></i></button>
+                        <button onclick="setAlignment('right')" class="p-1.5 bg-slate-800 hover:bg-slate-700 rounded"><i class="fa-solid fa-align-right"></i></button>
+                    </div>
+                `;
+            } else if (tab === 'insert') {
+                toolbar.innerHTML = `
+                    <button onclick="addWordArtPrompt()" class="px-3 py-1 bg-gradient-to-r from-yellow-400 to-amber-500 text-slate-950 font-bold rounded shadow flex items-center gap-1">
+                        <span>✨ WordArt</span>
+                    </button>
+                    <button onclick="addShape('star')" class="px-2.5 py-1 bg-purple-700 hover:bg-purple-600 rounded font-bold flex items-center gap-1">
+                        <span>⭐ Зірка</span>
+                    </button>
+                    <button onclick="addShape('rocket')" class="px-2.5 py-1 bg-purple-700 hover:bg-purple-600 rounded font-bold flex items-center gap-1">
+                        <span>🚀 Ракета</span>
+                    </button>
+                    <button onclick="addImagePrompt()" class="px-2.5 py-1 bg-cyan-700 hover:bg-cyan-600 rounded font-bold flex items-center gap-1">
+                        <span>🖼️ Малюнок</span>
+                    </button>
+                `;
+            } else if (tab === 'design') {
+                toolbar.innerHTML = `
+                    <span class="text-slate-400 font-bold mr-1">Тло Слайда:</span>
+                    <button onclick="setBg('#ffffff')" class="px-2 py-1 bg-white text-slate-900 font-bold rounded border">Білий ⚪</button>
+                    <button onclick="setBg('#0f172a')" class="px-2 py-1 bg-slate-900 text-white font-bold rounded border border-slate-700">Темний 🌙</button>
+                    <button onclick="setBg('#fef08a')" class="px-2 py-1 bg-yellow-200 text-yellow-900 font-bold rounded border">Жовтий 💛</button>
+                    <button onclick="setBg('#f472b6')" class="px-2 py-1 bg-pink-400 text-slate-950 font-bold rounded border">Рожевий 🩷</button>
+                `;
+            } else if (tab === 'transitions') {
+                toolbar.innerHTML = `
+                    <span class="text-slate-400 font-bold mr-1">Перехід слайда:</span>
+                    <button onclick="setTransition('none')" class="px-2 py-1 bg-slate-800 hover:bg-slate-700 rounded">Немає</button>
+                    <button onclick="setTransition('fade')" class="px-2 py-1 bg-indigo-700 hover:bg-indigo-600 rounded font-bold">🌊 Поява</button>
+                    <button onclick="setTransition('zoom')" class="px-2 py-1 bg-indigo-700 hover:bg-indigo-600 rounded font-bold">🔍 Масштаб</button>
+                `;
+            } else if (tab === 'animations') {
+                toolbar.innerHTML = `
+                    <span class="text-slate-400 font-bold mr-1">Анімація об'єкта:</span>
+                    <button onclick="setAnimation('bounce')" class="px-2.5 py-1 bg-pink-600 hover:bg-pink-500 rounded font-bold">⚽ Підстрибування</button>
+                    <button onclick="setAnimation('spin')" class="px-2.5 py-1 bg-purple-600 hover:bg-purple-500 rounded font-bold">🌀 Обертання</button>
+                    <button onclick="setAnimation('fade')" class="px-2.5 py-1 bg-teal-600 hover:bg-teal-500 rounded font-bold">✨ Поява</button>
+                `;
+            } else if (tab === 'show') {
+                toolbar.innerHTML = `
+                    <button onclick="startPresentationShow()" class="px-4 py-1.5 bg-gradient-to-r from-emerald-400 to-teal-500 text-slate-950 font-black rounded-lg shadow-lg flex items-center gap-1">
+                        <i class="fa-solid fa-play"></i>
+                        <span>З початку (F5) 🚀</span>
+                    </button>
+                `;
+            }
+        }
+
+        // SLIDE MANIPULATION FUNCTIONS
+        function renderSlidesList() {
+            const list = document.getElementById('slidesList');
+            list.innerHTML = '';
+            slides.forEach((slide, idx) => {
+                const isSelected = idx === currentSlideIndex;
+                const div = document.createElement('div');
+                div.className = `w-full aspect-[16/9] rounded-lg p-1 text-[8px] cursor-pointer border-2 transition-all flex flex-col justify-between ${
+                    isSelected ? 'border-yellow-400 bg-purple-900/80 shadow-md' : 'border-slate-700 bg-slate-800 hover:border-slate-500'
+                }`;
+                div.onclick = () => selectSlide(idx);
+                div.innerHTML = `
+                    <div class="font-bold text-slate-300 truncate">${idx + 1}. ${slide.title || 'Слайд'}</div>
+                    <div class="text-[7px] text-slate-400">${slide.layout}</div>
+                `;
+                list.appendChild(div);
+            });
+            document.getElementById('statusSlideInfo').innerText = `Слайд ${currentSlideIndex + 1} з ${slides.length}`;
+        }
+
+        function selectSlide(idx) {
+            currentSlideIndex = idx;
+            renderSlidesList();
+            renderCanvas();
+        }
+
+        function addNewSlide() {
+            const newId = slides.length + 1;
+            slides.push({
+                id: newId,
+                layout: 'content',
+                title: 'НОВИЙ КОСМІЧНИЙ СЛАЙД',
+                subtitle: 'Текст опису або фактів...',
+                bg: '#ffffff',
+                textColor: '#0f172a',
+                fontFamily: 'Nunito',
+                fontSize: '20px',
+                alignment: 'left',
+                hasWordArt: false,
+                wordArtText: '',
+                shape: null,
+                image: null,
+                animation: 'none',
+                transition: 'none'
+            });
+            currentSlideIndex = slides.length - 1;
+            renderSlidesList();
+            renderCanvas();
+        }
+
+        // RENDER CANVAS CONTENT
+        function renderCanvas() {
+            const canvas = document.getElementById('slideCanvas');
+            const slide = slides[currentSlideIndex];
+
+            canvas.style.backgroundColor = slide.bg;
+            canvas.style.fontFamily = slide.fontFamily;
+            canvas.style.textAlign = slide.alignment;
+
+            let animClass = '';
+            if (slide.animation === 'bounce') animClass = 'anim-bounce';
+            if (slide.animation === 'spin') animClass = 'anim-spin';
+            if (slide.animation === 'fade') animClass = 'anim-fade';
+
+            let html = '';
+
+            // WordArt element if exists
+            if (slide.hasWordArt) {
+                html += `
+                    <div class="mb-2 text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)] ${animClass}">
+                        ${slide.wordArtText}
+                    </div>
+                `;
+            }
+
+            // Layout Title/Content
+            if (slide.layout === 'title') {
+                html += `
+                    <div class="flex-1 flex flex-col justify-center items-center p-2">
+                        <input type="text" value="${slide.title}" onchange="updateTitle(this.value)" class="w-full text-center bg-transparent border-b border-dashed border-slate-400 text-lg md:text-2xl font-black focus:outline-none mb-2" style="color: ${slide.textColor}">
+                        <input type="text" value="${slide.subtitle}" onchange="updateSubtitle(this.value)" class="w-full text-center bg-transparent text-xs md:text-sm focus:outline-none opacity-80" style="color: ${slide.textColor}">
+                    </div>
+                `;
+            } else {
+                html += `
+                    <div class="flex-1 flex flex-col p-2">
+                        <input type="text" value="${slide.title}" onchange="updateTitle(this.value)" class="w-full bg-transparent border-b border-slate-300 text-base md:text-xl font-bold focus:outline-none mb-2" style="color: ${slide.textColor}">
+                        <textarea onchange="updateSubtitle(this.value)" class="w-full flex-1 bg-transparent text-xs md:text-sm focus:outline-none resize-none" style="color: ${slide.textColor}">${slide.subtitle}</textarea>
+                    </div>
+                `;
+            }
+
+            // Inserted Shapes / Icons / Images
+            if (slide.shape === 'star') {
+                html += `<div class="absolute bottom-3 right-3 text-4xl md:text-5xl text-yellow-400 ${animClass}">⭐</div>`;
+            } else if (slide.shape === 'rocket') {
+                html += `<div class="absolute bottom-3 right-3 text-4xl md:text-5xl ${animClass}">🚀</div>`;
+            }
+
+            if (slide.image) {
+                html += `
+                    <div class="absolute bottom-2 left-2 max-w-[100px] bg-slate-900/10 p-1 rounded border text-[8px] ${animClass}">
+                        <img src="${slide.image}" class="w-full h-12 object-cover rounded" alt="Space img">
+                        <span class="text-[6px] block opacity-70">Licence: Creative Commons 🌐</span>
+                    </div>
+                `;
+            }
+
+            canvas.innerHTML = html;
+            document.getElementById('statusLayoutInfo').innerText = `Макет: ${slide.layout === 'title' ? 'Титульний' : 'Вміст'}`;
+        }
+
+        // TOOLBAR HANDLERS
+        function setLayout(l) {
+            slides[currentSlideIndex].layout = l;
+            renderCanvas();
+        }
+
+        function setFont(f) {
+            slides[currentSlideIndex].fontFamily = f;
+            renderCanvas();
+        }
+
+        function setTextColor(c) {
+            slides[currentSlideIndex].textColor = c;
+            renderCanvas();
+        }
+
+        function setAlignment(a) {
+            slides[currentSlideIndex].alignment = a;
+            renderCanvas();
+        }
+
+        function setBg(bg) {
+            slides[currentSlideIndex].bg = bg;
+            renderCanvas();
+        }
+
+        function addWordArtPrompt() {
+            const text = prompt("Введіть яскравий текст для WordArt:", "СТОП АТАЦІ 🚀");
+            if (text) {
+                slides[currentSlideIndex].hasWordArt = true;
+                slides[currentSlideIndex].wordArtText = text;
+                renderCanvas();
+            }
+        }
+
+        function addShape(shape) {
+            slides[currentSlideIndex].shape = shape;
+            renderCanvas();
+        }
+
+        function addImagePrompt() {
+            slides[currentSlideIndex].image = "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=300&q=80";
+            renderCanvas();
+        }
+
+        function setTransition(t) {
+            slides[currentSlideIndex].transition = t;
+            alert(`Встановлено перехід слайда: ${t} 🔀`);
+        }
+
+        function setAnimation(a) {
+            slides[currentSlideIndex].animation = a;
+            renderCanvas();
+        }
+
+        function updateTitle(val) {
+            slides[currentSlideIndex].title = val;
+            renderSlidesList();
+        }
+
+        function updateSubtitle(val) {
+            slides[currentSlideIndex].subtitle = val;
+        }
+
+        // PRESENTATION SHOW & LASER POINTER LOGIC
+        function startPresentationShow() {
+            const overlay = document.getElementById('presentationOverlay');
+            overlay.classList.remove('hidden');
+            overlay.classList.add('flex');
+            renderShowSlide();
+        }
+
+        function exitShow() {
+            const overlay = document.getElementById('presentationOverlay');
+            overlay.classList.add('hidden');
+            overlay.classList.remove('flex');
+            isLaserActive = false;
+            document.getElementById('laserDot').classList.add('hidden');
+        }
+
+        function renderShowSlide() {
+            const slide = slides[currentSlideIndex];
+            const presBox = document.getElementById('presenterSlide');
+            document.getElementById('showSlideNum').innerText = `Слайд ${currentSlideIndex + 1} з ${slides.length}`;
+
+            presBox.style.backgroundColor = slide.bg;
+            presBox.style.fontFamily = slide.fontFamily;
+            presBox.style.textAlign = slide.alignment;
+
+            let html = `
+                <div class="h-full flex flex-col justify-center items-center">
+                    ${slide.hasWordArt ? `<div class="text-3xl font-black text-pink-500 mb-2">${slide.wordArtText}</div>` : ''}
+                    <h1 class="text-2xl md:text-4xl font-black mb-4" style="color: ${slide.textColor}">${slide.title}</h1>
+                    <p class="text-base md:text-lg" style="color: ${slide.textColor}">${slide.subtitle}</p>
+                    ${slide.shape === 'star' ? '<div class="text-6xl mt-4">⭐</div>' : ''}
+                    ${slide.shape === 'rocket' ? '<div class="text-6xl mt-4">🚀</div>' : ''}
+                </div>
+            `;
+            presBox.innerHTML = html;
+
+            // Track mouse for laser pointer
+            presBox.onmousemove = function(e) {
+                if (isLaserActive) {
+                    const dot = document.getElementById('laserDot');
+                    dot.style.left = `${e.clientX - 12}px`;
+                    dot.style.top = `${e.clientY - 12}px`;
+                }
+            };
+        }
+
+        function prevShowSlide() {
+            if (currentSlideIndex > 0) {
+                currentSlideIndex--;
+                renderShowSlide();
+            }
+        }
+
+        function nextShowSlide() {
+            if (currentSlideIndex < slides.length - 1) {
+                currentSlideIndex++;
+                renderShowSlide();
+            }
+        }
+
+        function toggleLaser() {
+            isLaserActive = !isLaserActive;
+            const dot = document.getElementById('laserDot');
+            const btn = document.getElementById('laserBtn');
+            if (isLaserActive) {
+                dot.classList.remove('hidden');
+                btn.className = "px-3 py-1 bg-yellow-400 text-slate-950 font-black rounded-lg shadow";
+            } else {
+                dot.classList.add('hidden');
+                btn.className = "px-3 py-1 bg-red-600 hover:bg-red-500 rounded-lg font-bold";
+            }
+        }
+
+        // KEYBOARD SHORTCUT (Esc to exit show)
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                exitShow();
+            }
+        });
+    </script>
+</body>
+</html>
